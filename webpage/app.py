@@ -14,7 +14,6 @@ def index():
 def home():
     return render_template ("home.html")
 
-
 def ValuePredictor(to_predict_list): 
     to_predict = np.array(to_predict_list).reshape(1, 52) 
     loaded_model = pickle.load(open("rf_modelOneHot2.pkl", "rb")) 
