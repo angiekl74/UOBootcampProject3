@@ -10,6 +10,10 @@ app = Flask(__name__)
 def index():
     return render_template ("index.html")
 
+@app.route('/chart')
+def chart():
+    return render_template("chart.html")
+
 @app.route('/')
 def home():
     return render_template ("home.html")

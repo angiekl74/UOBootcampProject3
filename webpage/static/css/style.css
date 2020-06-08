@@ -95,7 +95,7 @@ body {
     margin: 0;
   }
   
-.hamburger2{
+/* .hamburger2{
     justify-self: flex-end !important;
     margin-left: 500px;
     grid-area: right !important;
@@ -103,7 +103,7 @@ body {
     height: 10% !important;
     width: 10% !important;
     left: -100% !important;
-}
+} */
 .projectsLogo{
     align-items: center;
     color: white;
@@ -140,3 +140,7 @@ body {
     color: white;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
+
+
+    
+    
