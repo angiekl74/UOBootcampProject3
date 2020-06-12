@@ -9,11 +9,15 @@ app = Flask(__name__)
 def new_dog():
    return render_template('dog_intake.html')
 
-@app.route('/remove')
-def remove():
+@app.route('/delete')
+def delete():
    conn = sqlite3.connect("dogtest.db")  
    c = conn.cursor()
    c.execute("DELETE FROM LouisvilleCleanFinal WHERE PrimaryColor='ANGIE'")
+   conn.commit()
+   rows2 = "Deletions complete where PrimaryColor=ANGIE"
+   return render_template("list.html", rows2 = rows2)
+   conn.close()
 
 @app.route('/addrec', methods = ['POST'])
 def addrec():
@@ -38,21 +42,20 @@ def addrec():
             conn.rollback()
             msg2 = "Error"
             return render_template("resultrecord.html", msg = msg2)
+            conn.close()
         
         # finally:
         #     return render_template("resultrecord.html", msg2 = msg)
         #     conn.close()
 
-@app.route('/remove')
-def remove():
-   conn = sqlite3.connect("dogtest.db")
-#    conn.row_factory = sqlite3.Row
-   
-   c = conn.cursor()
-   c.execute("SELECT * FROM LouisvilleCleanFinal WHERE PrimaryColor='ANGIE'")
-   
-   rows = c.fetchmany(10);
-   return render_template("remove.html", rows = rows)
+@app.route('/list')
+def list():
+    conn = sqlite3.connect("dogtest.db")
+    c = conn.cursor()
+    c.execute("SELECT * FROM LouisvilleCleanFinal WHERE PrimaryColor='ANGIE'")
+      
+    rows = c.fetchmany(10);
+    return render_template("list.html", rows = rows)
 
 
 if __name__ == '__main__':
